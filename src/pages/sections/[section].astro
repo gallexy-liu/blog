@@ -1,0 +1,40 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteSidebar from "@/components/SiteSidebar.astro";
+import PostList from "@/components/PostList.astro";
+import { site, sectionById } from "@/config/site";
+import { getPostsBySection } from "@/lib/posts";
+
+export function getStaticPaths() {
+  return site.sections.map((section) => ({
+    params: { section: section.id }
+  }));
+}
+
+const { section: sectionId } = Astro.params;
+const section = sectionById(sectionId ?? "");
+const posts = getPostsBySection(sectionId ?? "");
+---
+
+<BaseLayout title={section?.name ?? "板块"} description={section?.description ?? site.description}>
+  <main class="shell">
+    <SiteSidebar />
+
+    <section class="content">
+      <header class="page-header compact">
+        <p class="eyebrow">Section</p>
+        <h1>{section?.name ?? "未知板块"}</h1>
+        <p>{section?.description ?? "这个板块还没有配置说明。"}</p>
+      </header>
+
+      {posts.length ? (
+        <PostList posts={posts} />
+      ) : (
+        <div class="empty-state">
+          <h2>还没有文章</h2>
+          <p>在 <code>src/content/posts</code> 新增 Markdown 文件，并把 frontmatter 里的 <code>section</code> 设为 <code>{sectionId}</code> 即可显示在这里。</p>
+        </div>
+      )}
+    </section>
+  </main>
+</BaseLayout>

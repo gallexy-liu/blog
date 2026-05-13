@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="抽象的写作和编程工作台插画">
+  <rect width="900" height="675" fill="#f3f6f0"/>
+  <rect x="90" y="110" width="720" height="455" rx="18" fill="#ffffff" stroke="#dfe5df" stroke-width="4"/>
+  <rect x="150" y="165" width="370" height="245" rx="10" fill="#202426"/>
+  <rect x="180" y="200" width="160" height="14" rx="7" fill="#58b7a8"/>
+  <rect x="180" y="238" width="250" height="14" rx="7" fill="#f5c963"/>
+  <rect x="180" y="276" width="210" height="14" rx="7" fill="#c24739"/>
+  <rect x="565" y="165" width="155" height="245" rx="10" fill="#e7f2ef"/>
+  <path d="M600 220h85M600 260h70M600 300h95M600 340h58" stroke="#127c72" stroke-width="12" stroke-linecap="round"/>
+  <rect x="240" y="455" width="420" height="42" rx="21" fill="#dfe5df"/>
+  <circle cx="690" cy="460" r="44" fill="#c24739"/>
+</svg>

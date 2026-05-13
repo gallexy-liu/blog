@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="项目原型和路线图插画">
+  <rect width="900" height="675" fill="#f5f7f8"/>
+  <rect x="110" y="105" width="680" height="465" rx="16" fill="#ffffff" stroke="#dfe5df" stroke-width="4"/>
+  <rect x="160" y="160" width="225" height="150" rx="8" fill="#e7f2ef" stroke="#127c72" stroke-width="4"/>
+  <rect x="515" y="160" width="225" height="150" rx="8" fill="#fff3df" stroke="#c24739" stroke-width="4"/>
+  <rect x="335" y="375" width="225" height="135" rx="8" fill="#eef1f5" stroke="#45505a" stroke-width="4"/>
+  <path d="M385 235h130M628 310v65M448 310v65" fill="none" stroke="#202426" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="272" cy="235" r="36" fill="#127c72"/>
+  <circle cx="628" cy="235" r="36" fill="#c24739"/>
+  <circle cx="448" cy="442" r="36" fill="#45505a"/>
+  <path d="M210 342h120M570 460h92" stroke="#f2b84b" stroke-width="14" stroke-linecap="round"/>
+</svg>

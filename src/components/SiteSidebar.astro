@@ -1,0 +1,40 @@
+---
+import { site, pathWithBase } from "@/config/site";
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const currentPath = Astro.url.pathname.replace(basePath, "") || "/";
+---
+
+<aside class="sidebar" aria-label="站点导航">
+  <a class="brand" href={pathWithBase("/")}>
+    <span class="brand-mark">G</span>
+    <span>
+      <strong>{site.shortTitle}</strong>
+      <small>{site.author}</small>
+    </span>
+  </a>
+
+  <p class="intro">{site.navIntro}</p>
+
+  <nav class="section-nav" aria-label="博客板块">
+    <a class:list={["nav-link", currentPath === "/" && "is-active"]} href={pathWithBase("/")}>全部</a>
+    {site.sections.map((section) => (
+      <a
+        class:list={["nav-link", currentPath === `/sections/${section.id}` && "is-active"]}
+        href={pathWithBase(`/sections/${section.id}`)}
+      >
+        {section.name}
+      </a>
+    ))}
+  </nav>
+
+  <div class="side-links">
+    <h2>链接</h2>
+    {site.links.map((link) => (
+      <a href={link.href.startsWith("http") ? link.href : pathWithBase(link.href)}>
+        <span>{link.title}</span>
+        <small>{link.description}</small>
+      </a>
+    ))}
+  </div>
+</aside>

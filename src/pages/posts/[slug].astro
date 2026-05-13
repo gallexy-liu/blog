@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteSidebar from "@/components/SiteSidebar.astro";
+import { formatDate, getAllPosts } from "@/lib/posts";
+import { pathWithBase } from "@/config/site";
+
+export function getStaticPaths() {
+  return getAllPosts().map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const Content = post.Content;
+---
+
+<BaseLayout title={post.title} description={post.description}>
+  <main class="shell">
+    <SiteSidebar />
+
+    <article class="content article-page">
+      <header class="article-header">
+        <a class="back-link" href={pathWithBase(`/sections/${post.section}`)}>返回{post.sectionName}</a>
+        <p class="post-meta">
+          <span>{post.sectionName}</span>
+          <time datetime={post.date}>{formatDate(post.date)}</time>
+        </p>
+        <h1>{post.title}</h1>
+        <p>{post.description}</p>
+        {post.cover ? <img class="article-cover" src={pathWithBase(post.cover)} alt="" /> : null}
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </main>
+</BaseLayout>

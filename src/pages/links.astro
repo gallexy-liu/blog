@@ -1,0 +1,28 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteSidebar from "@/components/SiteSidebar.astro";
+import { site, pathWithBase } from "@/config/site";
+---
+
+<BaseLayout title="链接" description="常用链接和项目入口。">
+  <main class="shell">
+    <SiteSidebar />
+
+    <section class="content">
+      <header class="page-header compact">
+        <p class="eyebrow">Links</p>
+        <h1>链接</h1>
+        <p>把常用入口、作品集、资料页和社交主页集中放在这里。</p>
+      </header>
+
+      <div class="link-grid">
+        {site.links.map((link) => (
+          <a class="link-card" href={link.href.startsWith("http") ? link.href : pathWithBase(link.href)}>
+            <span>{link.title}</span>
+            <p>{link.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
