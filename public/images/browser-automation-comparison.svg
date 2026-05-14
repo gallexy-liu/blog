@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="OpenCLI 与主流 Agentic Browser 方案对比标题图">
+  <rect width="1200" height="675" fill="#f6f7f4"/>
+  <rect x="70" y="70" width="1060" height="535" rx="18" fill="#ffffff" stroke="#dfe5df" stroke-width="4"/>
+  <text x="116" y="145" fill="#202426" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Agentic Browser Landscape</text>
+  <text x="116" y="187" fill="#6b7278" font-family="Segoe UI, Arial, sans-serif" font-size="23">会话复用、MCP、视觉控制与真实浏览器桥接的取舍</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">
+    <rect x="115" y="250" width="205" height="96" rx="10" fill="#fbe8e4" stroke="#c24739" stroke-width="3"/>
+    <text x="142" y="291" fill="#202426">Playwright</text>
+    <text x="142" y="323" fill="#6b7278" font-size="16" font-weight="500">clean instance</text>
+    <rect x="382" y="250" width="205" height="96" rx="10" fill="#ece8f8" stroke="#6f55b5" stroke-width="3"/>
+    <text x="412" y="291" fill="#202426">MCP Tools</text>
+    <text x="412" y="323" fill="#6b7278" font-size="16" font-weight="500">agent-native APIs</text>
+    <rect x="649" y="250" width="205" height="96" rx="10" fill="#fff2d9" stroke="#d49a2f" stroke-width="3"/>
+    <text x="679" y="291" fill="#202426">Visual Use</text>
+    <text x="679" y="323" fill="#6b7278" font-size="16" font-weight="500">screen + actions</text>
+    <rect x="916" y="250" width="154" height="96" rx="10" fill="#e7f2ef" stroke="#127c72" stroke-width="3"/>
+    <text x="951" y="291" fill="#202426">OpenCLI</text>
+    <text x="946" y="323" fill="#6b7278" font-size="16" font-weight="500">real Chrome</text>
+  </g>
+  <path d="M320 298h62M587 298h62M854 298h62" stroke="#202426" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 14"/>
+  <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M185 430h160v72H185z" stroke="#c24739"/>
+    <path d="M420 430h160v72H420z" stroke="#6f55b5"/>
+    <path d="M655 430h160v72H655z" stroke="#d49a2f"/>
+    <path d="M890 430h160v72H890z" stroke="#127c72"/>
+    <path d="M265 430v-40h705v40" stroke="#202426" opacity="0.28"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#202426" font-size="18" font-weight="700">
+    <text x="211" y="475">CDP</text>
+    <text x="459" y="475">JSON-RPC</text>
+    <text x="681" y="475">Vision</text>
+    <text x="925" y="475">Extension</text>
+  </g>
+  <circle cx="970" cy="248" r="18" fill="#127c72"/>
+  <path d="M960 248l7 7 15-18" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

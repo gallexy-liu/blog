@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="OpenCLI 架构深度分析标题图">
+  <rect width="1200" height="675" fill="#f5f7f8"/>
+  <rect x="72" y="64" width="1056" height="547" rx="18" fill="#ffffff" stroke="#dfe5df" stroke-width="4"/>
+  <text x="116" y="136" fill="#202426" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="800">OpenCLI Architecture</text>
+  <text x="116" y="178" fill="#6b7278" font-family="Segoe UI, Arial, sans-serif" font-size="23">CLI、Daemon、Chrome Extension 与用户浏览器会话的桥接</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-weight="800" text-anchor="middle">
+    <rect x="118" y="278" width="180" height="112" rx="10" fill="#e9edf1" stroke="#45505a" stroke-width="4"/>
+    <text x="208" y="326" fill="#202426" font-size="26">CLI</text>
+    <text x="208" y="356" fill="#6b7278" font-size="16" font-weight="500">command</text>
+    <rect x="378" y="278" width="180" height="112" rx="10" fill="#ece8f8" stroke="#6f55b5" stroke-width="4"/>
+    <text x="468" y="326" fill="#202426" font-size="26">Daemon</text>
+    <text x="468" y="356" fill="#6b7278" font-size="16" font-weight="500">localhost</text>
+    <rect x="638" y="278" width="180" height="112" rx="10" fill="#e7f2ef" stroke="#127c72" stroke-width="4"/>
+    <text x="728" y="326" fill="#202426" font-size="26">Extension</text>
+    <text x="728" y="356" fill="#6b7278" font-size="16" font-weight="500">MV3 bridge</text>
+    <rect x="898" y="278" width="180" height="112" rx="10" fill="#fff2d9" stroke="#d49a2f" stroke-width="4"/>
+    <text x="988" y="326" fill="#202426" font-size="26">Chrome</text>
+    <text x="988" y="356" fill="#6b7278" font-size="16" font-weight="500">logged-in</text>
+  </g>
+  <g fill="none" stroke="#202426" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 334h72"/>
+    <path d="M560 334h72"/>
+    <path d="M820 334h72"/>
+    <path d="M358 322l14 12-14 12M618 322l14 12-14 12M878 322l14 12-14 12"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#6b7278" text-anchor="middle">
+    <text x="338" y="306">HTTP</text>
+    <text x="598" y="306">WebSocket</text>
+    <text x="858" y="306">chrome.debugger</text>
+  </g>
+  <g>
+    <rect x="173" y="472" width="854" height="58" rx="29" fill="#202426"/>
+    <text x="600" y="508" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Make any website your CLI</text>
+  </g>
+  <path d="M210 244c92-54 196-54 312 0s220 54 312 0 167-45 214-8" fill="none" stroke="#c24739" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+</svg>
