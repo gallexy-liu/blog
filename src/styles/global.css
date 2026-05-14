@@ -381,6 +381,28 @@ h1 {
   padding: 0.1em 0.35em;
 }
 
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 0 0 1.4rem;
+}
+
+.prose th,
+.prose td {
+  min-width: 140px;
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
 .empty-state,
 .not-found {
   border: 1px solid var(--line);
