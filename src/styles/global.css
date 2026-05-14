@@ -404,11 +404,24 @@ h1 {
 }
 
 .empty-state,
-.not-found {
+.not-found,
+.comments {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
   padding: 28px;
+}
+
+.comments {
+  margin-top: 10px;
+}
+
+.comments .section-title-row {
+  margin-bottom: 18px;
+}
+
+.comments h2 {
+  margin: 0;
 }
 
 .empty-state h2,

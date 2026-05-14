@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SiteSidebar from "@/components/SiteSidebar.astro";
+import Comments from "@/components/Comments.astro";
 import { formatDate, getAllPosts } from "@/lib/posts";
 import { pathWithBase } from "@/config/site";
 
@@ -34,6 +35,8 @@ const Content = post.Content;
       <div class="prose">
         <Content />
       </div>
+
+      <Comments />
     </article>
   </main>
 </BaseLayout>

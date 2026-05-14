@@ -1,0 +1,32 @@
+---
+const repo = "gallexy-liu/blog";
+const repoId = "R_kgDOScEEdw";
+const category = "General";
+const categoryId = "DIC_kwDOScEEd84C9ALV";
+---
+
+<section class="comments" aria-labelledby="comments-title">
+  <div class="section-title-row">
+    <h2 id="comments-title">评论</h2>
+    <span>GitHub 登录后可留言</span>
+  </div>
+  <div class="giscus"></div>
+  <script
+    is:inline
+    src="https://giscus.app/client.js"
+    data-repo={repo}
+    data-repo-id={repoId}
+    data-category={category}
+    data-category-id={categoryId}
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>
