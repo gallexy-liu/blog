@@ -14,6 +14,30 @@ OpenCLI 选择了一条比较特别的路线：它不是再造一个浏览器自
 
 ## 六类方案的基本差异
 
+```mermaid
+flowchart LR
+    subgraph A["启动新实例"]
+        A1["脚本 / Agent"] -->|"CDP"| A2["干净浏览器"]
+        A2 -.-> A3["需要重新处理登录态"]
+    end
+
+    subgraph B["MCP 工具层"]
+        B1["AI Agent"] -->|"MCP JSON-RPC"| B2["Playwright / DevTools Server"]
+        B2 -->|"CDP / 自动化 API"| B3["浏览器"]
+    end
+
+    subgraph C["视觉驱动"]
+        C1["多模态模型"] -->|"截图理解"| C2["鼠标键盘动作"]
+        C2 --> C3["网页或桌面应用"]
+    end
+
+    subgraph D["OpenCLI 扩展桥接"]
+        D1["CLI"] -->|"HTTP"| D2["Daemon"]
+        D2 -->|"WebSocket"| D3["Chrome Extension"]
+        D3 -->|"chrome.debugger"| D4["用户已登录 Chrome"]
+    end
+```
+
 | 方案 | 核心方式 | 最大优势 | 主要代价 |
 | --- | --- | --- | --- |
 | Playwright / Puppeteer | 启动独立浏览器实例，通过 CDP 控制 | 稳定、成熟、适合测试和 CI | 默认没有用户登录状态 |
@@ -35,6 +59,23 @@ OpenCLI 选择了一条比较特别的路线：它不是再造一个浏览器自
 OpenCLI 的优势在这里出现：它通过 Chrome Extension 访问用户已经登录的 Chrome，再经由 daemon 转发命令。用户平时怎么登录网站，OpenCLI 就复用这个浏览器状态。对需要访问个人账号、企业后台、社交媒体或内部系统的场景，这个体验非常直接。
 
 但这也是它最敏感的地方。一个能读取用户浏览器 Cookie、控制标签页、执行脚本的扩展，天然需要更强的权限边界、命令白名单和本地请求防护。换句话说，OpenCLI 用便利性换来了安全设计上的压力。
+
+```mermaid
+flowchart TB
+    Login["登录态问题"] --> PW["Playwright 路线"]
+    Login --> OC["OpenCLI 路线"]
+
+    PW --> PW1["新浏览器实例"]
+    PW1 --> PW2["手动登录或导入 storageState"]
+    PW2 --> PW3["处理过期、2FA、SSO、风控"]
+
+    OC --> OC1["用户日常 Chrome 已登录"]
+    OC1 --> OC2["Extension 读取会话上下文"]
+    OC2 --> OC3["CLI 直接复用 Cookie / Session"]
+
+    PW3 -.-> Risk1["工程维护成本高"]
+    OC3 -.-> Risk2["权限和审计要求高"]
+```
 
 ## 架构复杂度：OpenCLI 为什么更重
 
@@ -59,6 +100,24 @@ CLI -> HTTP -> Daemon -> WebSocket -> Chrome Extension -> chrome.debugger -> Chr
 这不是无意义的复杂化，而是 Chrome 安全模型决定的代价：外部 CLI 进程不能直接随意控制用户日常浏览器；扩展可以接触浏览器上下文，但扩展又需要通过本地 daemon 与 CLI 通信。
 
 所以 OpenCLI 的复杂度本质上是一种设计取舍：用更多通信层换取对真实用户浏览器会话的透明访问。它适合个人工作流和需要登录态的数据管道，不一定适合高并发测试或云端托管自动化。
+
+```mermaid
+flowchart LR
+    subgraph P["Playwright"]
+        P1["脚本"] -->|"CDP"| P2["浏览器实例"]
+    end
+
+    subgraph M["MCP 方案"]
+        M1["AI Agent"] -->|"MCP"| M2["MCP Server"]
+        M2 -->|"CDP"| M3["浏览器实例"]
+    end
+
+    subgraph O["OpenCLI"]
+        O1["CLI"] -->|"HTTP"| O2["Daemon"]
+        O2 -->|"WebSocket"| O3["Chrome Extension"]
+        O3 -->|"chrome.debugger"| O4["用户 Chrome"]
+    end
+```
 
 ## AI Agent 适配：MCP 是 OpenCLI 的短板
 
@@ -97,6 +156,19 @@ OpenCLI 需要特别重视三件事：第一，限制命令能访问的域名和
 如果任务跨越网页和桌面应用，Claude Computer Use 这类视觉方案更泛化，但也更慢、更难精确验证。
 
 如果你要把已经登录的网站变成命令行数据源，OpenCLI 的定位很有吸引力。它最适合个人效率工具、内部后台查询、社交媒体数据抓取、需要复用真实登录态的轻量工作流。
+
+```mermaid
+flowchart TD
+    Start["要自动化什么？"] --> Test{"需要可重复测试？"}
+    Test -- "是" --> Playwright["Playwright"]
+    Test -- "否" --> Agent{"主要给 AI Agent 调用？"}
+    Agent -- "是" --> MCP["Playwright MCP / DevTools MCP / browser-use"]
+    Agent -- "否" --> Login{"强依赖用户已登录状态？"}
+    Login -- "是" --> OpenCLI["OpenCLI"]
+    Login -- "否" --> Visual{"跨网页和桌面应用？"}
+    Visual -- "是" --> ComputerUse["Computer Use / Operator"]
+    Visual -- "否" --> Simple["普通脚本或轻量 API 管道"]
+```
 
 ## 结论
 

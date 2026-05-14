@@ -403,6 +403,37 @@ h1 {
   color: var(--ink);
 }
 
+.prose pre {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #202426;
+  color: #f6f7f4;
+  padding: 18px;
+}
+
+.mermaid-frame {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  margin: 0 0 1.4rem;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgb(32 36 38 / 0.06);
+}
+
+.mermaid-frame .mermaid {
+  min-width: 680px;
+  text-align: center;
+}
+
+.mermaid-frame svg {
+  display: block;
+  max-width: none;
+  margin: 0 auto;
+}
+
 .empty-state,
 .not-found,
 .comments {

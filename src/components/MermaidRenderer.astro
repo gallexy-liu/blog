@@ -1,0 +1,68 @@
+<script>
+  const initializeMermaid = async () => {
+    const blocks = Array.from(
+      document.querySelectorAll("pre[data-language='mermaid'] > code, pre > code.language-mermaid")
+    );
+
+    if (!blocks.length) {
+      return;
+    }
+
+    const { default: mermaid } = await import("mermaid");
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "strict",
+      theme: "base",
+      themeVariables: {
+        fontFamily: "Inter, Segoe UI, Microsoft YaHei, sans-serif",
+        primaryColor: "#e7f2ef",
+        primaryTextColor: "#202426",
+        primaryBorderColor: "#127c72",
+        lineColor: "#45505a",
+        secondaryColor: "#fff3df",
+        tertiaryColor: "#f5f7f8",
+        noteBkgColor: "#fff3df",
+        noteTextColor: "#202426"
+      },
+      flowchart: {
+        curve: "basis",
+        htmlLabels: true,
+        nodeSpacing: 42,
+        rankSpacing: 54
+      },
+      sequence: {
+        mirrorActors: false,
+        noteMargin: 12,
+        messageMargin: 42
+      }
+    });
+
+    for (const [index, code] of blocks.entries()) {
+      const pre = code.parentElement;
+
+      if (!pre) {
+        continue;
+      }
+
+      const diagram = document.createElement("div");
+      diagram.className = "mermaid";
+      diagram.textContent = code.textContent ?? "";
+
+      const frame = document.createElement("div");
+      frame.className = "mermaid-frame";
+      frame.dataset.diagram = String(index + 1);
+      frame.append(diagram);
+
+      pre.replaceWith(frame);
+    }
+
+    await mermaid.run({ querySelector: ".mermaid" });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeMermaid, { once: true });
+  } else {
+    initializeMermaid();
+  }
+</script>
