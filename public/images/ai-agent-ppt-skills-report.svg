@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="GitHub 与 ClawHub 双生态 PPT 制作技术报告标题图">
+  <rect width="1200" height="675" fill="#f5f7f8"/>
+  <rect x="70" y="66" width="1060" height="543" rx="18" fill="#ffffff" stroke="#dfe5df" stroke-width="4"/>
+  <text x="116" y="138" fill="#202426" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">PPT as Code × Agent Skills</text>
+  <text x="116" y="181" fill="#6b7278" font-family="Segoe UI, Arial, sans-serif" font-size="23">GitHub 工程化幻灯片框架与 ClawHub 智能体技能的双生态比较</text>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="116" y="258" width="418" height="238" rx="12" fill="#e7f2ef" stroke="#127c72" stroke-width="4"/>
+    <text x="156" y="316" fill="#127c72" font-size="32" font-weight="800">GitHub</text>
+    <text x="156" y="356" fill="#202426" font-size="21" font-weight="700">Slidev · Marp · PptxGenJS</text>
+    <text x="156" y="394" fill="#45505a" font-size="18">Markdown / JS / OOXML</text>
+    <text x="156" y="428" fill="#45505a" font-size="18">Git diff · CI/CD · Web-native render</text>
+    <path d="M154 462h312" stroke="#127c72" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+    <circle cx="474" cy="462" r="15" fill="#127c72"/>
+    <rect x="666" y="258" width="418" height="238" rx="12" fill="#fff3df" stroke="#c24739" stroke-width="4"/>
+    <text x="706" y="316" fill="#c24739" font-size="32" font-weight="800">ClawHub</text>
+    <text x="706" y="356" fill="#202426" font-size="21" font-weight="700">openclaw-slides · 2slides · pptx skills</text>
+    <text x="706" y="394" fill="#45505a" font-size="18">SKILL.md · local sandbox · cloud API</text>
+    <text x="706" y="428" fill="#45505a" font-size="18">viewport constraints · agent orchestration</text>
+    <path d="M704 462h312" stroke="#c24739" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+    <circle cx="1024" cy="462" r="15" fill="#c24739"/>
+  </g>
+  <g fill="none" stroke="#202426" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M536 376h128"/>
+    <path d="M646 361l18 15-18 15"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <rect x="420" y="535" width="360" height="44" rx="22" fill="#202426"/>
+    <text x="600" y="563" fill="#ffffff" font-size="18" font-weight="700">从人写幻灯片，到 Agent 编译幻灯片</text>
+  </g>
+  <path d="M112 218c150-54 268-51 354 8s183 64 292 0 213-58 326-4" fill="none" stroke="#d49a2f" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+</svg>
