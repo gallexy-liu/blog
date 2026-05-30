@@ -38,6 +38,11 @@ export const site = {
       id: "projects",
       name: "项目",
       description: "个人作品、实验原型和阶段性复盘。"
+    },
+    {
+      id: "medicine",
+      name: "医学",
+      description: "医学研究、健康数据分析、文献整理和论文写作记录。"
     }
   ] satisfies Section[],
   links: [
@@ -75,6 +80,12 @@ export const site = {
       src: "/images/prototype.svg",
       alt: "项目原型和路线图插画",
       section: "projects"
+    },
+    {
+      title: "医学数据",
+      src: "/images/female-breast-thyroid-cover.svg",
+      alt: "女性体检数据与医学统计图表插画",
+      section: "medicine"
     }
   ] satisfies FeaturedImage[]
 };
