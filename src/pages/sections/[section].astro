@@ -21,7 +21,7 @@ const posts = getPostsBySection(sectionId ?? "");
     <SiteSidebar />
 
     <section class="content">
-      <header class="page-header compact">
+      <header class="page-header compact section-page-header">
         <p class="eyebrow">Section</p>
         <h1>{section?.name ?? "未知板块"}</h1>
         <p>{section?.description ?? "这个板块还没有配置说明。"}</p>

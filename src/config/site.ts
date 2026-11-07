@@ -18,8 +18,7 @@ export type FeaturedImage = {
 };
 
 export const site = {
-  title: "Gallexy 的个人博客",
-  shortTitle: "Gallexy Blog",
+  title: "Gallexy Data Intelligence Studio",
   author: "Gallexy Liu",
   description: "记录技术实践、生活观察和项目构想的个人博客。",
   navIntro: "写作、图片、链接和一些正在长大的想法。",
