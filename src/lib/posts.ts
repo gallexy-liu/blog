@@ -7,6 +7,7 @@ export type PostFrontmatter = {
   description: string;
   tags?: string[];
   cover?: string;
+  thumbnail?: { src: string; alt: string };
   draft?: boolean;
 };
 

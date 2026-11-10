@@ -4,6 +4,9 @@ date: "2026-11-07"
 section: "projects"
 description: "以三年体检队列研究为基础，探索如何把脂肪肝一年新发风险评估、体检趋势和随访管理放进同一个工作台。"
 tags: ["项目", "健康数据", "脂肪肝"]
+thumbnail:
+  src: "/images/liver-insight/dashboard.jpg"
+  alt: "肝知工作台的风险概览与随访管理界面"
 draft: false
 ---
 

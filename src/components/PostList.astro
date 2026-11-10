@@ -4,28 +4,27 @@ import { pathWithBase } from "@/config/site";
 
 type Props = {
   posts: BlogPost[];
+  layout?: "articles" | "projects";
 };
 
-const { posts } = Astro.props;
+const { posts, layout = "articles" } = Astro.props;
 ---
 
-<div class="post-list">
+<div class:list={["post-list", layout === "projects" && "project-list"]}>
   {posts.map((post) => (
-    <article class="post-card">
-      <a class="post-card-link" href={pathWithBase(`/posts/${post.slug}`)}>
-        <div>
+    <article class:list={["post-card", layout === "projects" && !post.thumbnail && "project-text-only"]}>
+      <a class="post-card-link" href={pathWithBase(`/posts/${post.slug}/`)}>
+        {layout === "projects" && post.thumbnail && (
+          <img class="project-thumbnail" src={pathWithBase(post.thumbnail.src)} alt={post.thumbnail.alt} loading="lazy" />
+        )}
+        <div class="post-card-body">
           <p class="post-meta">
             <span>{post.sectionName}</span>
             <time datetime={post.date}>{formatDate(post.date)}</time>
           </p>
           <h2>{post.title}</h2>
-          <p>{post.description}</p>
+          <p class="post-card-description">{post.description}</p>
         </div>
-        {post.tags?.length ? (
-          <ul class="tag-list" aria-label={`${post.title} 的标签`}>
-            {post.tags.map((tag) => <li>{tag}</li>)}
-          </ul>
-        ) : null}
       </a>
     </article>
   ))}

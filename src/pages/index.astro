@@ -2,54 +2,46 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SiteSidebar from "@/components/SiteSidebar.astro";
 import PostList from "@/components/PostList.astro";
-import { site, pathWithBase } from "@/config/site";
+import { pathWithBase } from "@/config/site";
 import { getAllPosts } from "@/lib/posts";
 
 const posts = getAllPosts();
+const recentPosts = posts.slice(0, 4);
+const olderPosts = posts.slice(4);
+const featuredProjects = posts.filter((post) => post.section === "projects" && post.thumbnail).slice(0, 2);
 ---
 
 <BaseLayout>
   <main class="shell">
     <SiteSidebar />
 
-    <section class="content">
-      <header class="page-header">
-        <p class="eyebrow">Personal Blog</p>
-        <h1>{site.title}</h1>
-        <p>{site.description}</p>
-      </header>
-
-      <section class="section-band" aria-labelledby="sections-title">
-        <div class="section-title-row">
-          <h2 id="sections-title">板块</h2>
-          <span>{site.sections.length} 个方向</span>
-        </div>
-        <div class="section-grid">
-          {site.sections.map((section) => (
-            <a class="section-card" href={pathWithBase(`/sections/${section.id}`)}>
-              <span>{section.name}</span>
-              <p>{section.description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section class="image-strip" aria-label="精选图片">
-        {site.featuredImages.map((image) => (
-          <figure>
-            <img src={pathWithBase(image.src)} alt={image.alt} loading="lazy" />
-            <figcaption>{image.title}</figcaption>
-          </figure>
-        ))}
-      </section>
-
-      <section aria-labelledby="latest-title">
-        <div class="section-title-row">
-          <h2 id="latest-title">最新文章</h2>
-          <span>{posts.length} 篇</span>
-        </div>
-        <PostList posts={posts} />
-      </section>
-    </section>
+    <div class="content home-content">
+      <div class="home-grid">
+        <section aria-labelledby="latest-title">
+          <div class="section-title-row home-heading">
+            <h1 id="latest-title">最新文章</h1>
+            <span>{posts.length} 篇</span>
+          </div>
+          <PostList posts={recentPosts} />
+        </section>
+        {featuredProjects.length > 0 && (
+          <section class="featured-projects" aria-labelledby="featured-title">
+            <div class="section-title-row">
+              <h2 id="featured-title">精选项目</h2>
+              <a class="section-more" href={pathWithBase("/sections/projects/")}>全部项目 <span aria-hidden="true">↗</span></a>
+            </div>
+            <PostList posts={featuredProjects} layout="projects" />
+          </section>
+        )}
+      </div>
+      {olderPosts.length > 0 && (
+        <section class="home-archive" aria-labelledby="archive-title">
+          <div class="section-title-row">
+            <h2 id="archive-title">更早的文章</h2>
+          </div>
+          <PostList posts={olderPosts} />
+        </section>
+      )}
+    </div>
   </main>
 </BaseLayout>

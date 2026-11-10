@@ -22,13 +22,12 @@ const posts = getPostsBySection(sectionId ?? "");
 
     <section class="content">
       <header class="page-header compact section-page-header">
-        <p class="eyebrow">Section</p>
         <h1>{section?.name ?? "未知板块"}</h1>
         <p>{section?.description ?? "这个板块还没有配置说明。"}</p>
       </header>
 
       {posts.length ? (
-        <PostList posts={posts} />
+        <PostList posts={posts} layout={sectionId === "projects" ? "projects" : "articles"} />
       ) : (
         <div class="empty-state">
           <h2>还没有文章</h2>

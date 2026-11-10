@@ -10,13 +10,6 @@ export type LinkItem = {
   description: string;
 };
 
-export type FeaturedImage = {
-  title: string;
-  src: string;
-  alt: string;
-  section: string;
-};
-
 export const site = {
   title: "Gallexy Data Intelligence Studio",
   author: "Gallexy Liu",
@@ -60,33 +53,7 @@ export const site = {
       href: "/sections/projects",
       description: "查看正在整理的个人项目。"
     }
-  ] satisfies LinkItem[],
-  featuredImages: [
-    {
-      title: "工作台",
-      src: "/images/workspace.svg",
-      alt: "抽象的写作和编程工作台插画",
-      section: "tech"
-    },
-    {
-      title: "城市黄昏",
-      src: "/images/city-evening.svg",
-      alt: "城市黄昏中的散步路线插画",
-      section: "life"
-    },
-    {
-      title: "原型草图",
-      src: "/images/prototype.svg",
-      alt: "项目原型和路线图插画",
-      section: "projects"
-    },
-    {
-      title: "医学数据",
-      src: "/images/female-breast-thyroid-cover.svg",
-      alt: "女性体检数据与医学统计图表插画",
-      section: "medicine"
-    }
-  ] satisfies FeaturedImage[]
+  ] satisfies LinkItem[]
 };
 
 export function sectionById(id: string) {
